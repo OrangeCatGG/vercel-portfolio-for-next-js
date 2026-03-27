@@ -14,7 +14,7 @@ import {
 import { home } from "./index";
 
 // IMPORTANT: Replace with your own domain address - it's used for SEO in meta tags and schema
-//const baseURL: string = "https://angeloramos-photography.com";
+const baseURL: string = "https://angeloramos-photography.com";
 
 const routes: RoutesConfig = {
   "/": true,
@@ -193,9 +193,11 @@ const schema: SchemaConfig = {
 };
 
 // social links
-//const sameAs: SameAsConfig = {
-//  instagram: "https://instagram.com/angeloramos_photography",
-//};
+const sameAs: SameAsConfig = {
+  threads: "",
+  linkedin: "",
+  discord: "",
+};
 
 // social sharing configuration for blog posts
 const socialSharing: SocialSharingConfig = {
@@ -218,11 +220,11 @@ export {
   mailchimp,
   routes,
   protectedRoutes,
-  //baseURL,
+  baseURL,
   fonts,
   style,
   schema,
-  //sameAs,
+  sameAs,
   socialSharing,
   effects,
   dataStyle,

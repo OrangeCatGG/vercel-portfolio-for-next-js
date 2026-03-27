@@ -14,6 +14,7 @@ import {
   SpacingToken,
 } from "@once-ui-system/core";
 import { Footer, Header, RouteGuard, Providers } from "@/components";
+import MessengerButton from "@/components/MessengerButton";
 import { baseURL, effects, fonts, style, dataStyle, home } from "@/resources";
 
 export async function generateMetadata() {
@@ -163,6 +164,7 @@ export default async function RootLayout({
             </Flex>
           </Flex>
           <Footer />
+          <MessengerButton />
         </Column>
       </Providers>
     </Flex>

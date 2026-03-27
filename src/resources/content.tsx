@@ -27,7 +27,7 @@ const social: Social = [
   {
     name: "Instagram",
     icon: "instagram",
-    link: "https://instagram.com/angeloramos_photography",
+    link: "https://www.instagram.com/angeloramosph/",
     essential: true,
   },
   {

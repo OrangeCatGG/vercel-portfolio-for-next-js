@@ -33,8 +33,8 @@ const contactInfo = [
   {
     icon: "instagram",
     label: "Instagram",
-    value: "@angeloramos_photography",
-    href: "https://instagram.com/angeloramos_photography",
+    value: "@angeloramosph",
+    href: "https://www.instagram.com/angeloramosph/",
   },
   {
     icon: "facebook",
@@ -371,12 +371,12 @@ export default function Contact() {
               angeloramos.photography
             </Button>
             <Button
-              href="https://instagram.com/angeloramos_photography"
+              href="https://www.instagram.com/angeloramosph/"
               variant="secondary"
               size="l"
               prefixIcon="instagram"
             >
-              @angeloramos_photography
+              @angeloramosph
             </Button>
           </Row>
         </Card>

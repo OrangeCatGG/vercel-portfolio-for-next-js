@@ -116,7 +116,7 @@ export default function Contact() {
   }
 
   return (
-    <Column maxWidth="l" paddingY="24" gap="64">
+    <Column maxWidth="l" fillWidth horizontal="center" paddingY="24" gap="64">
       {/* Header */}
       <RevealFx translateY="4">
         <Column horizontal="center" gap="m">

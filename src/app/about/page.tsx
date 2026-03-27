@@ -55,7 +55,7 @@ const whyChooseUs = [
 
 export default function About() {
   return (
-    <Column maxWidth="m" paddingY="24" gap="80">
+    <Column maxWidth="m" fillWidth horizontal="center" paddingY="24" gap="80">
       <Schema
         as="webPage"
         baseURL={baseURL}
@@ -92,7 +92,7 @@ export default function About() {
       <RevealFx translateY="8" delay={0.1}>
         <Row gap="48" fillWidth vertical="center" s={{ direction: "column" }}>
           {about.avatar.display && (
-            <Column horizontal="center" minWidth="200">
+            <Column horizontal="center" style={{ minWidth: "200px" }}>
               <Avatar src={person.avatar} size="xl" />
             </Column>
           )}
@@ -151,7 +151,7 @@ export default function About() {
         </RevealFx>
         
         <RevealFx translateY="16" delay={0.1}>
-          <Grid columns="repeat(2, 1fr)" gap="24" s={{ columns: "1fr" }}>
+          <Grid columns="2" gap="24" s={{ columns: "1" }}>
             {whyChooseUs.map((item, index) => (
               <Card
                 key={index}
@@ -213,7 +213,7 @@ export default function About() {
                     <Badge
                       background="brand-alpha-weak"
                       paddingX="12"
-                      paddingY="6"
+                      paddingY="8"
                       textVariant="label-default-s"
                       onBackground="brand-medium"
                     >

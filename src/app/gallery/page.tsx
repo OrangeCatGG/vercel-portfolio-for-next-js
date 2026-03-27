@@ -14,7 +14,7 @@ export async function generateMetadata() {
 
 export default function Gallery() {
   return (
-    <Column maxWidth="l" gap="48" paddingY="24">
+    <Column maxWidth="l" fillWidth horizontal="center" gap="48" paddingY="24">
       <Schema
         as="webPage"
         baseURL={baseURL}

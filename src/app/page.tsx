@@ -146,7 +146,7 @@ export default function Home() {
         <RevealFx translateY="16" delay={0.6} fillWidth paddingTop="48">
           <Row fillWidth radius="l" overflow="hidden" style={{ aspectRatio: "21/9" }}>
             <Media
-              src="/images/hero-wedding.jpg"
+              src="/images/hero-wedding-latest.jpg"
               alt="Wedding photography by Angeloramos Photography"
               fill
               priority
@@ -159,8 +159,8 @@ export default function Home() {
 
       {/* Services Section */}
       <Column fillWidth gap="l" id="services">
-        <RevealFx translateY="8">
-          <Column horizontal="center" gap="m">
+        <RevealFx translateY="8" fillWidth>
+          <Column fillWidth horizontal="center" gap="m">
             <Text variant="label-default-s" onBackground="brand-medium">OUR SERVICES</Text>
             <Heading as="h2" variant="display-strong-m" align="center">
               Complete Photography Solutions
@@ -173,7 +173,7 @@ export default function Home() {
         </RevealFx>
         
         <RevealFx translateY="16" delay={0.2}>
-          <Grid columns="repeat(4, 1fr)" gap="16" s={{ columns: "repeat(2, 1fr)" }}>
+          <Grid columns="4" gap="16" s={{ columns: "2" }}>
             {services.map((service, index) => (
               <Card
                 key={index}
@@ -252,7 +252,7 @@ export default function Home() {
         </RevealFx>
         
         <RevealFx translateY="16" delay={0.2}>
-          <Grid columns="repeat(4, 1fr)" gap="8" s={{ columns: "repeat(2, 1fr)" }}>
+          <Grid columns="4" gap="8" s={{ columns: "2" }}>
             {gallery.images.slice(0, 4).map((image, index) => (
               <Row 
                 key={index} 
@@ -297,7 +297,7 @@ export default function Home() {
         </RevealFx>
         
         <RevealFx translateY="16" delay={0.2}>
-          <Grid columns="repeat(3, 1fr)" gap="24" s={{ columns: "1fr" }}>
+          <Grid columns="3" gap="24" s={{ columns: "1" }}>
             {testimonials.map((testimonial, index) => (
               <Card
                 key={index}

@@ -238,3 +238,9 @@ export interface Gallery extends BasePageConfig {
     orientation: string;
   }>;
 }
+
+/**
+ * Contact page configuration.
+ * @description Configuration for the Contact page, including metadata and navigation label.
+ */
+export interface Contact extends BasePageConfig {}

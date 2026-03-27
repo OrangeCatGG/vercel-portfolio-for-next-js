@@ -1,49 +1,27 @@
-import { About, Blog, Gallery, Home, Newsletter, Person, Social, Work } from "@/types";
-import { Line, Row, Text } from "@once-ui-system/core";
+import { About, Blog, Contact, Gallery, Home, Newsletter, Person, Social, Work } from "@/types";
 
 const person: Person = {
-  firstName: "Selene",
-  lastName: "Yu",
-  name: `Selene Yu`,
-  role: "Design Engineer",
+  firstName: "Angelo",
+  lastName: "Ramos",
+  name: "Angeloramos Photography",
+  role: "Photography & Videography",
   avatar: "/images/avatar.jpg",
-  email: "example@gmail.com",
-  location: "Asia/Jakarta", // Expecting the IANA time zone identifier, e.g., 'Europe/Vienna'
-  languages: ["English", "Bahasa"], // optional: Leave the array empty if you don't want to display languages
+  email: "marisagojocruz06@yahoo.com.ph",
+  location: "Asia/Manila",
+  languages: ["Filipino", "English"],
 };
 
 const newsletter: Newsletter = {
-  display: true,
-  title: <>Subscribe to {person.firstName}'s Newsletter</>,
-  description: <>My weekly newsletter about creativity and engineering</>,
+  display: false,
+  title: <>Subscribe to Our Newsletter</>,
+  description: <>Get updates on our latest work and exclusive offers</>,
 };
 
 const social: Social = [
-  // Links are automatically displayed.
-  // Import new icons in /once-ui/icons.ts
-  // Set essentials: true for links you want to show on the about page
-  {
-    name: "GitHub",
-    icon: "github",
-    link: "https://github.com/once-ui-system",
-    essential: true,
-  },
-  {
-    name: "LinkedIn",
-    icon: "linkedin",
-    link: "https://www.linkedin.com/company/once-ui/",
-    essential: true,
-  },
   {
     name: "Instagram",
     icon: "instagram",
-    link: "https://www.instagram.com/once_ui/",
-    essential: false,
-  },
-  {
-    name: "Threads",
-    icon: "threads",
-    link: "https://www.threads.com/@once_ui",
+    link: "https://instagram.com/angeloramos_photography",
     essential: true,
   },
   {
@@ -58,34 +36,29 @@ const home: Home = {
   path: "/",
   image: "/images/og/home.jpg",
   label: "Home",
-  title: `${person.name}'s Portfolio`,
-  description: `Portfolio website showcasing my work as a ${person.role}`,
-  headline: <>Building bridges between design and code</>,
+  title: "Angeloramos Photography | Wedding & Event Photography",
+  description: "Professional photography and videography services for weddings, events, and special moments. Capturing memories that last forever.",
+  headline: <>Capturing Moments That Last Forever</>,
   featured: {
     display: true,
     title: (
-      <Row gap="12" vertical="center">
-        <strong className="ml-4">Once UI</strong>{" "}
-        <Line background="brand-alpha-strong" vert height="20" />
-        <Text marginRight="4" onBackground="brand-medium">
-          Featured work
-        </Text>
-      </Row>
+      <>FREE PICTORIAL</>
     ),
-    href: "/work/building-once-ui-a-customizable-design-system",
+    href: "/contact",
   },
   subline: (
     <>
-    I'm Selene, a design engineer at <Text as="span" size="xl" weight="strong">ONCE UI</Text>, where I craft intuitive <br /> user experiences. After hours, I build my own projects.
-</>
+      Professional photography and videography for your most precious moments. 
+      Weddings, debuts, birthdays, and every celebration in between.
+    </>
   ),
 };
 
 const about: About = {
   path: "/about",
   label: "About",
-  title: `About – ${person.name}`,
-  description: `Meet ${person.name}, ${person.role} from ${person.location}`,
+  title: "About Angeloramos Photography",
+  description: "Learn about our passion for capturing beautiful moments and our commitment to excellence in photography and videography.",
   tableOfContent: {
     display: true,
     subItems: false,
@@ -95,138 +68,93 @@ const about: About = {
   },
   calendar: {
     display: true,
-    link: "https://cal.com",
+    link: "mailto:marisagojocruz06@yahoo.com.ph?subject=Booking%20Inquiry",
   },
   intro: {
     display: true,
-    title: "Introduction",
+    title: "Our Story",
     description: (
       <>
-        Selene is a Jakarta-based design engineer with a passion for transforming complex challenges
-        into simple, elegant design solutions. Her work spans digital interfaces, interactive
-        experiences, and the convergence of design and technology.
+        At Angeloramos Photography, we believe every moment tells a story worth preserving. 
+        With years of experience in wedding and event photography, we have dedicated ourselves 
+        to the art of capturing emotions, connections, and the fleeting beauty of life&apos;s 
+        most precious celebrations. Our approach combines cinematic storytelling with 
+        authentic emotion, ensuring your memories are preserved with elegance and artistry.
       </>
     ),
   },
   work: {
-    display: true, // set to false to hide this section
-    title: "Work Experience",
+    display: true,
+    title: "Our Expertise",
     experiences: [
       {
-        company: "FLY",
-        timeframe: "2022 - Present",
-        role: "Senior Design Engineer",
+        company: "Wedding Photography",
+        timeframe: "Signature Service",
+        role: "Full Coverage & Same Day Edit",
         achievements: [
-          <>
-            Redesigned the UI/UX for the FLY platform, resulting in a 20% increase in user
-            engagement and 30% faster load times.
-          </>,
-          <>
-            Spearheaded the integration of AI tools into design workflows, enabling designers to
-            iterate 50% faster.
-          </>,
+          <>Complete wedding day coverage from preparation to reception</>,
+          <>Same Day Edit (SDE) video presentations for your guests</>,
+          <>Cinematic storytelling that captures every emotional moment</>,
         ],
-        images: [
-          // optional: leave the array empty if you don't want to display images
-          {
-            src: "/images/projects/project-01/cover-01.jpg",
-            alt: "Once UI Project",
-            width: 16,
-            height: 9,
-          },
-        ],
+        images: [],
       },
       {
-        company: "Creativ3",
-        timeframe: "2018 - 2022",
-        role: "Lead Designer",
+        company: "Event Coverage",
+        timeframe: "All Occasions",
+        role: "Professional Documentation",
         achievements: [
-          <>
-            Developed a design system that unified the brand across multiple platforms, improving
-            design consistency by 40%.
-          </>,
-          <>
-            Led a cross-functional team to launch a new product line, contributing to a 15% increase
-            in overall company revenue.
-          </>,
+          <>Baptismal, birthday, debut, reunion, and corporate events</>,
+          <>High-quality photo and video packages tailored to your needs</>,
+          <>Onsite editing and instant prints available</>,
         ],
         images: [],
       },
     ],
   },
   studies: {
-    display: true, // set to false to hide this section
+    display: false,
     title: "Studies",
-    institutions: [
-      {
-        name: "University of Jakarta",
-        description: <>Studied software engineering.</>,
-      },
-      {
-        name: "Build the Future",
-        description: <>Studied online marketing and personal branding.</>,
-      },
-    ],
+    institutions: [],
   },
   technical: {
-    display: true, // set to false to hide this section
-    title: "Technical skills",
+    display: true,
+    title: "Equipment & Capabilities",
     skills: [
       {
-        title: "Figma",
+        title: "Professional Camera Equipment",
         description: (
-          <>Able to prototype in Figma with Once UI with unnatural speed.</>
+          <>State-of-the-art cameras and lenses for stunning image quality</>
         ),
         tags: [
           {
-            name: "Figma",
-            icon: "figma",
-          },
-        ],
-        // optional: leave the array empty if you don't want to display images
-        images: [
-          {
-            src: "/images/projects/project-01/cover-02.jpg",
-            alt: "Project image",
-            width: 16,
-            height: 9,
+            name: "DSLR",
           },
           {
-            src: "/images/projects/project-01/cover-03.jpg",
-            alt: "Project image",
-            width: 16,
-            height: 9,
+            name: "Mirrorless",
+          },
+          {
+            name: "4K Video",
           },
         ],
+        images: [],
       },
       {
-        title: "Next.js",
+        title: "Studio & Lighting",
         description: (
-          <>Building next gen apps with Next.js + Once UI + Supabase.</>
+          <>Professional lighting setups for studio portraits and events</>
         ),
         tags: [
           {
-            name: "JavaScript",
-            icon: "javascript",
+            name: "Photobooth",
           },
           {
-            name: "Next.js",
-            icon: "nextjs",
+            name: "Studio Lights",
           },
           {
-            name: "Supabase",
-            icon: "supabase",
+            name: "Projector",
           },
         ],
-        // optional: leave the array empty if you don't want to display images
-        images: [
-          {
-            src: "/images/projects/project-01/cover-04.jpg",
-            alt: "Project image",
-            width: 16,
-            height: 9,
-          },
-        ],
+        images: [],
       },
     ],
   },
@@ -235,70 +163,71 @@ const about: About = {
 const blog: Blog = {
   path: "/blog",
   label: "Blog",
-  title: "Writing about design and tech...",
-  description: `Read what ${person.name} has been up to recently`,
-  // Create new blog posts by adding a new .mdx file to app/blog/posts
-  // All posts will be listed on the /blog route
+  title: "Photography Tips & Stories",
+  description: "Insights, tips, and stories from our photography journey",
 };
 
 const work: Work = {
   path: "/work",
-  label: "Work",
-  title: `Projects – ${person.name}`,
-  description: `Design and dev projects by ${person.name}`,
-  // Create new project pages by adding a new .mdx file to app/blog/posts
-  // All projects will be listed on the /home and /work routes
+  label: "Services",
+  title: "Our Services | Angeloramos Photography",
+  description: "Complete photography and videography services for all your special occasions",
 };
 
 const gallery: Gallery = {
   path: "/gallery",
   label: "Gallery",
-  title: `Photo gallery – ${person.name}`,
-  description: `A photo collection by ${person.name}`,
-  // Images by https://lorant.one
-  // These are placeholder images, replace with your own
+  title: "Portfolio Gallery | Angeloramos Photography",
+  description: "Browse our collection of wedding, debut, birthday, and event photography",
   images: [
     {
       src: "/images/gallery/horizontal-1.jpg",
-      alt: "image",
+      alt: "Wedding photography",
       orientation: "horizontal",
     },
     {
       src: "/images/gallery/vertical-4.jpg",
-      alt: "image",
+      alt: "Portrait photography",
       orientation: "vertical",
     },
     {
       src: "/images/gallery/horizontal-3.jpg",
-      alt: "image",
+      alt: "Event photography",
       orientation: "horizontal",
     },
     {
       src: "/images/gallery/vertical-1.jpg",
-      alt: "image",
+      alt: "Debut photography",
       orientation: "vertical",
     },
     {
       src: "/images/gallery/vertical-2.jpg",
-      alt: "image",
+      alt: "Birthday photography",
       orientation: "vertical",
     },
     {
       src: "/images/gallery/horizontal-2.jpg",
-      alt: "image",
+      alt: "Wedding moments",
       orientation: "horizontal",
     },
     {
       src: "/images/gallery/horizontal-4.jpg",
-      alt: "image",
+      alt: "Celebration photography",
       orientation: "horizontal",
     },
     {
       src: "/images/gallery/vertical-3.jpg",
-      alt: "image",
+      alt: "Portrait session",
       orientation: "vertical",
     },
   ],
 };
 
-export { person, social, newsletter, home, about, blog, work, gallery };
+const contact: Contact = {
+  path: "/contact",
+  label: "Contact",
+  title: "Contact Us | Angeloramos Photography",
+  description: "Get in touch with us for photography and videography inquiries. Book your event today!",
+};
+
+export { person, social, newsletter, home, about, blog, work, gallery, contact };

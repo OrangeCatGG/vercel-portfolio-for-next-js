@@ -11,9 +11,12 @@ import {
   Meta,
   Schema,
   Row,
+  Card,
+  Badge,
+  RevealFx,
+  Grid,
 } from "@once-ui-system/core";
 import { baseURL, about, person, social } from "@/resources";
-import TableOfContents from "@/components/about/TableOfContents";
 import styles from "@/components/about/about.module.scss";
 import React from "react";
 
@@ -27,31 +30,32 @@ export async function generateMetadata() {
   });
 }
 
+const whyChooseUs = [
+  {
+    icon: "camera",
+    title: "Professional Equipment",
+    description: "State-of-the-art cameras, lenses, and lighting equipment for stunning results.",
+  },
+  {
+    icon: "heart",
+    title: "Passion for Storytelling",
+    description: "We capture emotions and moments that tell your unique story.",
+  },
+  {
+    icon: "clock",
+    title: "Timely Delivery",
+    description: "Receive your photos and videos promptly after your event.",
+  },
+  {
+    icon: "sparkle",
+    title: "Creative Excellence",
+    description: "Artistic vision combined with technical expertise in every shot.",
+  },
+];
+
 export default function About() {
-  const structure = [
-    {
-      title: about.intro.title,
-      display: about.intro.display,
-      items: [],
-    },
-    {
-      title: about.work.title,
-      display: about.work.display,
-      items: about.work.experiences.map((experience) => experience.company),
-    },
-    {
-      title: about.studies.title,
-      display: about.studies.display,
-      items: about.studies.institutions.map((institution) => institution.name),
-    },
-    {
-      title: about.technical.title,
-      display: about.technical.display,
-      items: about.technical.skills.map((skill) => skill.title),
-    },
-  ];
   return (
-    <Column maxWidth="m">
+    <Column maxWidth="m" paddingY="24" gap="80">
       <Schema
         as="webPage"
         baseURL={baseURL}
@@ -65,278 +69,260 @@ export default function About() {
           image: `${baseURL}${person.avatar}`,
         }}
       />
-      {about.tableOfContent.display && (
-        <Column
-          left="0"
-          style={{ top: "50%", transform: "translateY(-50%)" }}
-          position="fixed"
-          paddingLeft="24"
-          gap="32"
-          s={{ hide: true }}
-        >
-          <TableOfContents structure={structure} about={about} />
+      
+      {/* Hero Section */}
+      <RevealFx translateY="4">
+        <Column horizontal="center" gap="m">
+          <Badge
+            background="brand-alpha-weak"
+            paddingX="16"
+            paddingY="8"
+            onBackground="brand-strong"
+            textVariant="label-default-s"
+          >
+            Our Story
+          </Badge>
+          <Heading variant="display-strong-l" align="center">
+            About Us
+          </Heading>
         </Column>
-      )}
-      <Row fillWidth s={{ direction: "column"}} horizontal="center">
-        {about.avatar.display && (
-          <Column
-            className={styles.avatar}
-            top="64"
-            fitHeight
-            position="sticky"
-            s={{ position: "relative", style: { top: "auto" } }}
-            xs={{ style: { top: "auto" } }}
-            minWidth="160"
-            paddingX="l"
-            paddingBottom="xl"
-            gap="m"
-            flex={3}
-            horizontal="center"
-          >
-            <Avatar src={person.avatar} size="xl" />
-            <Row gap="8" vertical="center">
-              <Icon onBackground="accent-weak" name="globe" />
-              {person.location}
-            </Row>
-            {person.languages && person.languages.length > 0 && (
-              <Row wrap gap="8">
-                {person.languages.map((language, index) => (
-                  <Tag key={index} size="l">
-                    {language}
-                  </Tag>
-                ))}
-              </Row>
-            )}
-          </Column>
-        )}
-        <Column className={styles.blockAlign} flex={9} maxWidth={40}>
-          <Column
-            id={about.intro.title}
-            fillWidth
-            minHeight="160"
-            vertical="center"
-            marginBottom="32"
-          >
-            {about.calendar.display && (
-              <Row
-                fitWidth
-                border="brand-alpha-medium"
-                background="brand-alpha-weak"
-                radius="full"
-                padding="4"
-                gap="8"
-                marginBottom="m"
-                vertical="center"
-                className={styles.blockAlign}
-                style={{
-                  backdropFilter: "blur(var(--static-space-1))",
-                }}
-              >
-                <Icon paddingLeft="12" name="calendar" onBackground="brand-weak" />
-                <Row paddingX="8">Schedule a call</Row>
-                <IconButton
-                  href={about.calendar.link}
-                  data-border="rounded"
-                  variant="secondary"
-                  icon="chevronRight"
-                />
-              </Row>
-            )}
-            <Heading className={styles.textAlign} variant="display-strong-xl">
+      </RevealFx>
+
+      {/* Main About Section */}
+      <RevealFx translateY="8" delay={0.1}>
+        <Row gap="48" fillWidth vertical="center" s={{ direction: "column" }}>
+          {about.avatar.display && (
+            <Column horizontal="center" minWidth="200">
+              <Avatar src={person.avatar} size="xl" />
+            </Column>
+          )}
+          <Column gap="24" flex={1}>
+            <Heading as="h2" variant="heading-strong-xl">
               {person.name}
             </Heading>
-            <Text
-              className={styles.textAlign}
-              variant="display-default-xs"
-              onBackground="neutral-weak"
-            >
-              {person.role}
+            <Text variant="body-default-l" onBackground="neutral-weak">
+              {about.intro.description}
             </Text>
+            <Row gap="16" wrap>
+              <Row gap="8" vertical="center">
+                <Icon name="mapPin" onBackground="brand-medium" />
+                <Text variant="body-default-m" onBackground="neutral-weak">Philippines</Text>
+              </Row>
+              {person.languages && person.languages.length > 0 && (
+                <Row gap="8" wrap>
+                  {person.languages.map((language, index) => (
+                    <Tag key={index} size="l">
+                      {language}
+                    </Tag>
+                  ))}
+                </Row>
+              )}
+            </Row>
             {social.length > 0 && (
-              <Row
-                className={styles.blockAlign}
-                paddingTop="20"
-                paddingBottom="8"
-                gap="8"
-                wrap
-                horizontal="center"
-                fitWidth
-                data-border="rounded"
-              >
-                {social
-                      .filter((item) => item.essential)
-                      .map(
-                  (item) =>
-                    item.link && (
-                      <React.Fragment key={item.name}>
-                        <Row s={{ hide: true }}>
-                          <Button
-                            key={item.name}
-                            href={item.link}
-                            prefixIcon={item.icon}
-                            label={item.name}
-                            size="s"
-                            weight="default"
-                            variant="secondary"
-                          />
-                        </Row>
-                        <Row hide s={{ hide: false }}>
-                          <IconButton
-                            size="l"
-                            key={`${item.name}-icon`}
-                            href={item.link}
-                            icon={item.icon}
-                            variant="secondary"
-                          />
-                        </Row>
-                      </React.Fragment>
-                    ),
+              <Row gap="8" wrap>
+                {social.map((item) =>
+                  item.link && (
+                    <Button
+                      key={item.name}
+                      href={item.link}
+                      prefixIcon={item.icon}
+                      label={item.name}
+                      size="s"
+                      weight="default"
+                      variant="secondary"
+                    />
+                  )
                 )}
               </Row>
             )}
           </Column>
+        </Row>
+      </RevealFx>
 
-          {about.intro.display && (
-            <Column textVariant="body-default-l" fillWidth gap="m" marginBottom="xl">
-              {about.intro.description}
-            </Column>
-          )}
+      {/* Why Choose Us */}
+      <Column gap="32">
+        <RevealFx translateY="8">
+          <Column horizontal="center" gap="m">
+            <Text variant="label-default-s" onBackground="brand-medium">WHY CHOOSE US</Text>
+            <Heading as="h2" variant="display-strong-m" align="center">
+              What Sets Us Apart
+            </Heading>
+          </Column>
+        </RevealFx>
+        
+        <RevealFx translateY="16" delay={0.1}>
+          <Grid columns="repeat(2, 1fr)" gap="24" s={{ columns: "1fr" }}>
+            {whyChooseUs.map((item, index) => (
+              <Card
+                key={index}
+                padding="24"
+                radius="l"
+                background="surface"
+                border="neutral-alpha-weak"
+                direction="column"
+                gap="16"
+              >
+                <Row gap="16" vertical="center">
+                  <Row 
+                    padding="12" 
+                    radius="m" 
+                    background="brand-alpha-weak"
+                  >
+                    <Icon name={item.icon as any} size="m" onBackground="brand-strong" />
+                  </Row>
+                  <Text variant="heading-strong-m">{item.title}</Text>
+                </Row>
+                <Text variant="body-default-m" onBackground="neutral-weak">
+                  {item.description}
+                </Text>
+              </Card>
+            ))}
+          </Grid>
+        </RevealFx>
+      </Column>
 
-          {about.work.display && (
-            <>
-              <Heading as="h2" id={about.work.title} variant="display-strong-s" marginBottom="m">
+      {/* Our Expertise */}
+      {about.work.display && (
+        <Column gap="32">
+          <RevealFx translateY="8">
+            <Column gap="m">
+              <Text variant="label-default-s" onBackground="brand-medium">EXPERTISE</Text>
+              <Heading as="h2" variant="display-strong-m">
                 {about.work.title}
               </Heading>
-              <Column fillWidth gap="l" marginBottom="40">
-                {about.work.experiences.map((experience, index) => (
-                  <Column key={`${experience.company}-${experience.role}-${index}`} fillWidth>
-                    <Row fillWidth horizontal="between" vertical="end" marginBottom="4">
-                      <Text id={experience.company} variant="heading-strong-l">
-                        {experience.company}
-                      </Text>
-                      <Text variant="heading-default-xs" onBackground="neutral-weak">
-                        {experience.timeframe}
-                      </Text>
-                    </Row>
-                    <Text variant="body-default-s" onBackground="brand-weak" marginBottom="m">
-                      {experience.role}
-                    </Text>
-                    <Column as="ul" gap="16">
-                      {experience.achievements.map(
-                        (achievement: React.ReactNode, index: number) => (
-                          <Text
-                            as="li"
-                            variant="body-default-m"
-                            key={`${experience.company}-${index}`}
-                          >
-                            {achievement}
-                          </Text>
-                        ),
-                      )}
-                    </Column>
-                    {experience.images && experience.images.length > 0 && (
-                      <Row fillWidth paddingTop="m" paddingLeft="40" gap="12" wrap>
-                        {experience.images.map((image, index) => (
-                          <Row
-                            key={index}
-                            border="neutral-medium"
-                            radius="m"
-                            minWidth={image.width}
-                            height={image.height}
-                          >
-                            <Media
-                              enlarge
-                              radius="m"
-                              sizes={image.width.toString()}
-                              alt={image.alt}
-                              src={image.src}
-                            />
-                          </Row>
-                        ))}
+            </Column>
+          </RevealFx>
+          
+          <RevealFx translateY="16" delay={0.1}>
+            <Column gap="24">
+              {about.work.experiences.map((experience, index) => (
+                <Card
+                  key={`${experience.company}-${index}`}
+                  fillWidth
+                  padding="32"
+                  radius="l"
+                  background="surface"
+                  border="neutral-alpha-weak"
+                  direction="column"
+                  gap="16"
+                >
+                  <Row fillWidth horizontal="between" vertical="center" wrap>
+                    <Heading as="h3" variant="heading-strong-l">
+                      {experience.company}
+                    </Heading>
+                    <Badge
+                      background="brand-alpha-weak"
+                      paddingX="12"
+                      paddingY="6"
+                      textVariant="label-default-s"
+                      onBackground="brand-medium"
+                    >
+                      {experience.timeframe}
+                    </Badge>
+                  </Row>
+                  <Text variant="body-default-m" onBackground="brand-weak">
+                    {experience.role}
+                  </Text>
+                  <Column as="ul" gap="12" paddingLeft="20">
+                    {experience.achievements.map((achievement: React.ReactNode, i: number) => (
+                      <Row key={i} as="li" gap="8" vertical="start">
+                        <Icon name="check" size="s" onBackground="brand-medium" style={{ marginTop: "4px" }} />
+                        <Text variant="body-default-m">{achievement}</Text>
                       </Row>
-                    )}
+                    ))}
                   </Column>
-                ))}
-              </Column>
-            </>
-          )}
+                </Card>
+              ))}
+            </Column>
+          </RevealFx>
+        </Column>
+      )}
 
-          {about.studies.display && (
-            <>
-              <Heading as="h2" id={about.studies.title} variant="display-strong-s" marginBottom="m">
-                {about.studies.title}
-              </Heading>
-              <Column fillWidth gap="l" marginBottom="40">
-                {about.studies.institutions.map((institution, index) => (
-                  <Column key={`${institution.name}-${index}`} fillWidth gap="4">
-                    <Text id={institution.name} variant="heading-strong-l">
-                      {institution.name}
-                    </Text>
-                    <Text variant="heading-default-xs" onBackground="neutral-weak">
-                      {institution.description}
-                    </Text>
-                  </Column>
-                ))}
-              </Column>
-            </>
-          )}
-
-          {about.technical.display && (
-            <>
-              <Heading
-                as="h2"
-                id={about.technical.title}
-                variant="display-strong-s"
-                marginBottom="40"
-              >
+      {/* Equipment & Capabilities */}
+      {about.technical.display && (
+        <Column gap="32">
+          <RevealFx translateY="8">
+            <Column gap="m">
+              <Text variant="label-default-s" onBackground="brand-medium">CAPABILITIES</Text>
+              <Heading as="h2" variant="display-strong-m">
                 {about.technical.title}
               </Heading>
-              <Column fillWidth gap="l">
-                {about.technical.skills.map((skill, index) => (
-                  <Column key={`${skill}-${index}`} fillWidth gap="4">
-                    <Text id={skill.title} variant="heading-strong-l">
-                      {skill.title}
-                    </Text>
+            </Column>
+          </RevealFx>
+          
+          <RevealFx translateY="16" delay={0.1}>
+            <Column gap="24">
+              {about.technical.skills.map((skill, index) => (
+                <Card
+                  key={`${skill.title}-${index}`}
+                  fillWidth
+                  padding="32"
+                  radius="l"
+                  background="surface"
+                  border="neutral-alpha-weak"
+                  direction="column"
+                  gap="16"
+                >
+                  <Text variant="heading-strong-l">{skill.title}</Text>
+                  {skill.description && (
                     <Text variant="body-default-m" onBackground="neutral-weak">
                       {skill.description}
                     </Text>
-                    {skill.tags && skill.tags.length > 0 && (
-                      <Row wrap gap="8" paddingTop="8">
-                        {skill.tags.map((tag, tagIndex) => (
-                          <Tag key={`${skill.title}-${tagIndex}`} size="l" prefixIcon={tag.icon}>
-                            {tag.name}
-                          </Tag>
-                        ))}
-                      </Row>
-                    )}
-                    {skill.images && skill.images.length > 0 && (
-                      <Row fillWidth paddingTop="m" gap="12" wrap>
-                        {skill.images.map((image, index) => (
-                          <Row
-                            key={index}
-                            border="neutral-medium"
-                            radius="m"
-                            minWidth={image.width}
-                            height={image.height}
-                          >
-                            <Media
-                              enlarge
-                              radius="m"
-                              sizes={image.width.toString()}
-                              alt={image.alt}
-                              src={image.src}
-                            />
-                          </Row>
-                        ))}
-                      </Row>
-                    )}
-                  </Column>
-                ))}
-              </Column>
-            </>
-          )}
+                  )}
+                  {skill.tags && skill.tags.length > 0 && (
+                    <Row wrap gap="8">
+                      {skill.tags.map((tag, tagIndex) => (
+                        <Tag key={`${skill.title}-${tagIndex}`} size="l">
+                          {tag.name}
+                        </Tag>
+                      ))}
+                    </Row>
+                  )}
+                </Card>
+              ))}
+            </Column>
+          </RevealFx>
         </Column>
-      </Row>
+      )}
+
+      {/* CTA Section */}
+      <RevealFx translateY="8">
+        <Card
+          fillWidth
+          padding="48"
+          radius="xl"
+          background="brand-alpha-weak"
+          border="brand-alpha-medium"
+          direction="column"
+          gap="24"
+          horizontal="center"
+          align="center"
+        >
+          <Heading as="h2" variant="display-strong-m" align="center">
+            Ready to Work Together?
+          </Heading>
+          <Text variant="body-default-l" onBackground="neutral-weak" align="center" style={{ maxWidth: "500px" }}>
+            Let us capture your special moments with creativity and professionalism.
+          </Text>
+          <Row gap="16" wrap horizontal="center">
+            <Button
+              href="/contact"
+              variant="primary"
+              size="l"
+              arrowIcon
+            >
+              Get in Touch
+            </Button>
+            <Button
+              href="/gallery"
+              variant="secondary"
+              size="l"
+            >
+              View Our Work
+            </Button>
+          </Row>
+        </Card>
+      </RevealFx>
     </Column>
   );
 }

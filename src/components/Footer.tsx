@@ -38,7 +38,7 @@ export const Footer = () => {
           </Link>
           <Link href="tel:+639488895424">
             <Row gap="8" vertical="center">
-              <Icon name="phone" size="s" onBackground="neutral-weak" />
+              <Icon name="openLink" size="s" onBackground="neutral-weak" />
               <Text variant="body-default-s" onBackground="neutral-weak">0948 889 5424</Text>
             </Row>
           </Link>

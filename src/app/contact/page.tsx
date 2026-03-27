@@ -25,7 +25,7 @@ const contactInfo = [
     href: "mailto:marisagojocruz06@yahoo.com.ph",
   },
   {
-    icon: "phone",
+    icon: "openLink",
     label: "Phone",
     value: "0948 889 5424",
     href: "tel:+639488895424",
@@ -322,7 +322,7 @@ export default function Contact() {
                 href="tel:+639488895424"
                 variant="secondary"
                 size="m"
-                prefixIcon="phone"
+                prefixIcon="openLink"
                 fillWidth
               >
                 Call Now

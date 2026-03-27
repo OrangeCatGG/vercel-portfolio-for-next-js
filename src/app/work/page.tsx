@@ -300,7 +300,7 @@ export default function Work() {
               href="tel:+639488895424"
               variant="ghost"
               size="m"
-              prefixIcon="phone"
+              prefixIcon="openLink"
             >
               Call Us: 0948 889 5424
             </Button>

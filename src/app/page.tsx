@@ -377,7 +377,7 @@ export default function Home() {
             </Link>
           </Row>
           <Row gap="12" vertical="center">
-            <Icon name="phone" onBackground="brand-medium" />
+            <Icon name="openLink" onBackground="brand-medium" />
             <Link href="tel:+639488895424">
               <Text variant="body-default-m" onBackground="neutral-weak">0948 889 5424</Text>
             </Link>

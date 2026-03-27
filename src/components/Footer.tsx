@@ -1,4 +1,5 @@
-import { Row, IconButton, SmartLink, Text, Column, Icon, SmartImage } from "@once-ui-system/core";
+import { Row, IconButton, SmartLink, Text, Column, Icon } from "@once-ui-system/core";
+import Image from "next/image";
 import { person, social } from "@/resources";
 import styles from "./Footer.module.scss";
 import Link from "next/link";
@@ -18,13 +19,12 @@ export const Footer = () => {
       >
         {/* Logo */}
         <Link href="/" style={{ display: 'flex', alignItems: 'center', opacity: 0.85 }}>
-          <SmartImage
+          <Image
             src="/images/logo.jpg"
             alt="Angeloramos Photography"
             height={48}
             width={48}
-            radius="full"
-            style={{ objectFit: 'cover' }}
+            className="rounded-full object-cover"
           />
         </Link>
 

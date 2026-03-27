@@ -36,8 +36,9 @@ export function generateStaticParams() {
   return Object.keys(sdeVideos).map((id) => ({ id }));
 }
 
-export default function SDEVideoPage({ params }: { params: { id: string } }) {
-  const video = sdeVideos[params.id];
+export default async function SDEVideoPage({ params }: { params: Promise<{ id: string }> }) {
+  const { id } = await params;
+  const video = sdeVideos[id];
   if (!video) notFound();
 
   return (

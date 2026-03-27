@@ -3,7 +3,8 @@
 import { usePathname } from "next/navigation";
 import { useEffect, useState } from "react";
 
-import { Fade, Flex, Line, Row, ToggleButton } from "@once-ui-system/core";
+import { Fade, Flex, Line, Row, ToggleButton, SmartImage } from "@once-ui-system/core";
+import Link from "next/link";
 
 import { routes, display, person, about, blog, work, gallery, contact } from "@/resources";
 import { ThemeToggle } from "./ThemeToggle";
@@ -72,7 +73,17 @@ export const Header = () => {
           position: "fixed",
         }}
       >
-        <Row paddingLeft="12" fillWidth vertical="center" textVariant="body-default-s">
+        <Row paddingLeft="12" fillWidth vertical="center" textVariant="body-default-s" gap="12">
+          <Link href="/" style={{ display: 'flex', alignItems: 'center', opacity: 0.9 }}>
+            <SmartImage
+              src="/images/logo.jpg"
+              alt="Angeloramos Photography"
+              height={36}
+              width={36}
+              radius="full"
+              style={{ objectFit: 'cover' }}
+            />
+          </Link>
           {display.location && <Row s={{ hide: true }}>{person.location}</Row>}
         </Row>
         <Row fillWidth horizontal="center">

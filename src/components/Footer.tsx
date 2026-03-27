@@ -1,4 +1,4 @@
-import { Row, IconButton, SmartLink, Text, Column, Icon } from "@once-ui-system/core";
+import { Row, IconButton, SmartLink, Text, Column, Icon, SmartImage } from "@once-ui-system/core";
 import { person, social } from "@/resources";
 import styles from "./Footer.module.scss";
 import Link from "next/link";
@@ -16,6 +16,18 @@ export const Footer = () => {
         gap="24"
         horizontal="center"
       >
+        {/* Logo */}
+        <Link href="/" style={{ display: 'flex', alignItems: 'center', opacity: 0.85 }}>
+          <SmartImage
+            src="/images/logo.jpg"
+            alt="Angeloramos Photography"
+            height={48}
+            width={48}
+            radius="full"
+            style={{ objectFit: 'cover' }}
+          />
+        </Link>
+
         {/* Contact Info */}
         <Row gap="24" wrap horizontal="center" s={{ direction: "column", horizontal: "center" }}>
           <Link href="mailto:marisagojocruz06@yahoo.com.ph">

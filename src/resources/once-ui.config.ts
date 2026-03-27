@@ -194,7 +194,7 @@ const schema: SchemaConfig = {
 
 // social links
 const sameAs: SameAsConfig = {
-  instagram: "https://instagram.com/angeloramos_photography",
+  //  instagram: "https://instagram.com/angeloramos_photography",
 };
 
 // social sharing configuration for blog posts

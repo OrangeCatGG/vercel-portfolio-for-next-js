@@ -146,7 +146,7 @@ export default function Home() {
         <RevealFx translateY="16" delay={0.6} fillWidth paddingTop="48">
           <Row fillWidth radius="l" overflow="hidden" style={{ aspectRatio: "21/9" }}>
             <Media
-              src="/images/hero-wedding.jpg"
+              src="/images/hero-wedding.jpg?v=2"
               alt="Wedding photography by Angeloramos Photography"
               fill
               priority

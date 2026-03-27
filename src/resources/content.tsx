@@ -5,7 +5,7 @@ const person: Person = {
   lastName: "Ramos",
   name: "Angeloramos Photography",
   role: "Photography & Videography",
-  avatar: "/images/avatar.jpg",
+  avatar: "/images/avatar.jpg?v=2",
   email: "marisagojocruz06@yahoo.com.ph",
   location: "Asia/Manila",
   languages: ["Filipino", "English"],

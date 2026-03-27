@@ -193,9 +193,9 @@ const schema: SchemaConfig = {
 };
 
 // social links
-const sameAs: SameAsConfig = {
-  //  instagram: "https://instagram.com/angeloramos_photography",
-};
+//const sameAs: SameAsConfig = {
+//  instagram: "https://instagram.com/angeloramos_photography",
+//};
 
 // social sharing configuration for blog posts
 const socialSharing: SocialSharingConfig = {
@@ -218,11 +218,11 @@ export {
   mailchimp,
   routes,
   protectedRoutes,
-  baseURL,
+  //baseURL,
   fonts,
   style,
   schema,
-  sameAs,
+  //sameAs,
   socialSharing,
   effects,
   dataStyle,

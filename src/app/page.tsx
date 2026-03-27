@@ -383,11 +383,17 @@ export default function Home() {
             </Link>
           </Row>
           <Row gap="12" vertical="center">
-            <Icon name="instagram" onBackground="brand-medium" />
-            <Link href="https://instagram.com/angeloramos_photography" target="_blank">
-              <Text variant="body-default-m" onBackground="neutral-weak">@angeloramos_photography</Text>
-            </Link>
-          </Row>
+              <Icon name="instagram" onBackground="brand-medium" />
+              <Link href="https://instagram.com/angeloramos_photography" target="_blank">
+                <Text variant="body-default-m" onBackground="neutral-weak">@angeloramos_photography</Text>
+              </Link>
+            </Row>
+            <Row gap="12" vertical="center">
+              <Icon name="facebook" onBackground="brand-medium" />
+              <Link href="https://www.facebook.com/angeloramos.photography" target="_blank">
+                <Text variant="body-default-m" onBackground="neutral-weak">angeloramos.photography</Text>
+              </Link>
+            </Row>
         </Row>
       </Column>
     </Column>

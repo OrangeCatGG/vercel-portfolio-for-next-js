@@ -19,6 +19,12 @@ const newsletter: Newsletter = {
 
 const social: Social = [
   {
+    name: "Facebook",
+    icon: "facebook",
+    link: "https://www.facebook.com/angeloramos.photography",
+    essential: true,
+  },
+  {
     name: "Instagram",
     icon: "instagram",
     link: "https://instagram.com/angeloramos_photography",

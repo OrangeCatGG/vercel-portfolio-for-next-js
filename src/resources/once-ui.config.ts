@@ -14,51 +14,50 @@ import {
 import { home } from "./index";
 
 // IMPORTANT: Replace with your own domain address - it's used for SEO in meta tags and schema
-const baseURL: string = "https://demo.magic-portfolio.com";
+const baseURL: string = "https://angeloramos-photography.com";
 
 const routes: RoutesConfig = {
   "/": true,
   "/about": true,
   "/work": true,
-  "/blog": true,
+  "/blog": false,
   "/gallery": true,
+  "/contact": true,
 };
 
 const display: DisplayConfig = {
-  location: true,
-  time: true,
+  location: false,
+  time: false,
   themeSwitcher: true,
 };
 
 // Enable password protection on selected routes
 // Set password in the .env file, refer to .env.example
-const protectedRoutes: ProtectedRoutesConfig = {
-  "/work/automate-design-handovers-with-a-figma-to-code-pipeline": true,
-};
+const protectedRoutes: ProtectedRoutesConfig = {};
 
 // Import and set font for each variant
-import { Geist } from "next/font/google";
-import { Geist_Mono } from "next/font/google";
+import { Cormorant_Garamond, Inter } from "next/font/google";
 
-const heading = Geist({
+const heading = Cormorant_Garamond({
   variable: "--font-heading",
   subsets: ["latin"],
+  weight: ["400", "500", "600", "700"],
   display: "swap",
 });
 
-const body = Geist({
+const body = Inter({
   variable: "--font-body",
   subsets: ["latin"],
   display: "swap",
 });
 
-const label = Geist({
+const label = Inter({
   variable: "--font-label",
   subsets: ["latin"],
   display: "swap",
 });
 
-const code = Geist_Mono({
+const code = Inter({
   variable: "--font-code",
   subsets: ["latin"],
   display: "swap",
@@ -71,12 +70,12 @@ const fonts: FontsConfig = {
   code: code,
 };
 
-// default customization applied to the HTML in the main layout.tsx
+// Dark elegant theme with gold accents for photography
 const style: StyleConfig = {
-  theme: "system", // dark | light | system
+  theme: "dark", // dark | light | system
   neutral: "gray", // sand | gray | slate | mint | rose | dusk | custom
-  brand: "cyan", // blue | indigo | violet | magenta | pink | red | orange | yellow | moss | green | emerald | aqua | cyan | custom
-  accent: "red", // blue | indigo | violet | magenta | pink | red | orange | yellow | moss | green | emerald | aqua | cyan | custom
+  brand: "yellow", // Using yellow as a warm gold-like accent
+  accent: "orange", // Warm accent for highlights
   solid: "contrast", // color | contrast
   solidStyle: "flat", // flat | plastic
   border: "playful", // rounded | playful | conservative | sharp
@@ -107,19 +106,19 @@ const effects: EffectsConfig = {
     radius: 100,
   },
   gradient: {
-    display: false,
-    opacity: 100,
+    display: true,
+    opacity: 40,
     x: 50,
-    y: 60,
+    y: 30,
     width: 100,
-    height: 50,
+    height: 60,
     tilt: 0,
-    colorStart: "accent-background-strong",
+    colorStart: "brand-background-strong",
     colorEnd: "page-background",
   },
   dots: {
-    display: true,
-    opacity: 40,
+    display: false,
+    opacity: 20,
     size: "2",
     color: "brand-background-strong",
   },
@@ -188,27 +187,25 @@ const mailchimp: MailchimpConfig = {
 const schema: SchemaConfig = {
   logo: "",
   type: "Organization",
-  name: "Once UI",
+  name: "Angeloramos Photography",
   description: home.description,
-  email: "lorant@once-ui.com",
+  email: "marisagojocruz06@yahoo.com.ph",
 };
 
 // social links
 const sameAs: SameAsConfig = {
-  threads: "https://www.threads.com/@once_ui",
-  linkedin: "https://www.linkedin.com/company/once-ui/",
-  discord: "https://discord.com/invite/5EyAQ4eNdS",
+  instagram: "https://instagram.com/angeloramos_photography",
 };
 
 // social sharing configuration for blog posts
 const socialSharing: SocialSharingConfig = {
   display: true,
   platforms: {
-    x: true,
-    linkedin: true,
-    facebook: false,
+    x: false,
+    linkedin: false,
+    facebook: true,
     pinterest: false,
-    whatsapp: false,
+    whatsapp: true,
     reddit: false,
     telegram: false,
     email: true,

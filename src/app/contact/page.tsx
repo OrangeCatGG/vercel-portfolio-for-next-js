@@ -36,6 +36,12 @@ const contactInfo = [
     value: "@angeloramos_photography",
     href: "https://instagram.com/angeloramos_photography",
   },
+  {
+    icon: "facebook",
+    label: "Facebook",
+    value: "angeloramos.photography",
+    href: "https://www.facebook.com/angeloramos.photography",
+  },
 ];
 
 const eventTypes = [
@@ -265,7 +271,7 @@ export default function Contact() {
               
               <Column gap="20">
                 {contactInfo.map((info, index) => (
-                  <Link key={index} href={info.href} target={info.icon === "instagram" ? "_blank" : undefined}>
+                  <Link key={index} href={info.href} target={info.icon === "instagram" || info.icon === "facebook" ? "_blank" : undefined}>
                     <Row gap="16" vertical="center">
                       <Row 
                         padding="12" 
@@ -332,7 +338,7 @@ export default function Contact() {
         </RevealFx>
       </Row>
 
-      {/* Instagram CTA */}
+      {/* Social CTA */}
       <RevealFx translateY="8" delay={0.3}>
         <Card
           fillWidth
@@ -345,21 +351,34 @@ export default function Contact() {
           horizontal="center"
           align="center"
         >
-          <Icon name="instagram" size="xl" onBackground="brand-strong" />
+          <Row gap="16">
+            <Icon name="facebook" size="xl" onBackground="brand-strong" />
+            <Icon name="instagram" size="xl" onBackground="brand-strong" />
+          </Row>
           <Heading as="h2" variant="heading-strong-l" align="center">
-            Follow Us on Instagram
+            Find Us on Social Media
           </Heading>
           <Text variant="body-default-l" onBackground="neutral-weak" align="center">
             See our latest work and behind-the-scenes moments
           </Text>
-          <Button
-            href="https://instagram.com/angeloramos_photography"
-            variant="primary"
-            size="l"
-            prefixIcon="instagram"
-          >
-            @angeloramos_photography
-          </Button>
+          <Row gap="12" wrap horizontal="center">
+            <Button
+              href="https://www.facebook.com/angeloramos.photography"
+              variant="primary"
+              size="l"
+              prefixIcon="facebook"
+            >
+              angeloramos.photography
+            </Button>
+            <Button
+              href="https://instagram.com/angeloramos_photography"
+              variant="secondary"
+              size="l"
+              prefixIcon="instagram"
+            >
+              @angeloramos_photography
+            </Button>
+          </Row>
         </Card>
       </RevealFx>
     </Column>

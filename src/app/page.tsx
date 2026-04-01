@@ -15,6 +15,13 @@ import {
 } from "@once-ui-system/core";
 import { home, about, person, baseURL, gallery } from "@/resources";
 import Link from "next/link";
+import InstagramGrid from "@/components/InstagramGrid";
+import FeaturedFilms from "@/components/FeaturedFilms";
+import BookingTimeline from "@/components/BookingTimeline";
+import HomeGallery from "@/components/HomeGallery";
+import EquipmentShowcase from "@/components/EquipmentShowcase";
+import MeetThePhotographer from "@/components/MeetThePhotographer";
+import TestimonialSlider from "@/components/TestimonialSlider";
 
 export async function generateMetadata() {
   return Meta.generate({
@@ -48,23 +55,6 @@ const events = [
   "Any Occasion",
 ];
 
-const testimonials = [
-  {
-    name: "Maria Santos",
-    event: "Wedding",
-    text: "Angeloramos Photography captured our wedding day perfectly. Every emotion, every moment was preserved beautifully. The same-day edit was the highlight of our reception!",
-  },
-  {
-    name: "John & Ana Cruz",
-    event: "Debut",
-    text: "Our daughter&apos;s debut was magical, and the photos reflect that perfectly. Professional, creative, and so easy to work with. Highly recommended!",
-  },
-  {
-    name: "The Reyes Family",
-    event: "Baptismal",
-    text: "From the church ceremony to the reception, every important moment was captured. The team was so patient with our little one. Thank you for the wonderful memories!",
-  },
-];
 
 export default function Home() {
   return (
@@ -146,7 +136,7 @@ export default function Home() {
         <RevealFx translateY="16" delay={0.6} fillWidth paddingTop="48">
           <Row fillWidth radius="l" overflow="hidden" style={{ aspectRatio: "21/9" }}>
             <Media
-              src="/images/hero-wedding-latest.jpg"
+              src="/images/hero-wedding.jpg"
               alt="Wedding photography by Angeloramos Photography"
               fill
               priority
@@ -156,6 +146,9 @@ export default function Home() {
           </Row>
         </RevealFx>
       </Column>
+
+      {/* Meet The Photographer Section */}
+      <MeetThePhotographer />
 
       {/* Services Section */}
       <Column fillWidth gap="l" id="services">
@@ -211,6 +204,9 @@ export default function Home() {
         </RevealFx>
       </Column>
 
+      {/* Booking Timeline Section */}
+      <BookingTimeline />
+
       {/* Events Covered Section */}
       <Column fillWidth gap="l">
         <RevealFx translateY="8">
@@ -241,90 +237,15 @@ export default function Home() {
       </Column>
 
       {/* Gallery Preview */}
-      <Column fillWidth gap="l">
-        <RevealFx translateY="8">
-          <Column horizontal="center" gap="m">
-            <Text variant="label-default-s" onBackground="brand-medium">PORTFOLIO</Text>
-            <Heading as="h2" variant="display-strong-m" align="center">
-              Moments We&apos;ve Captured
-            </Heading>
-          </Column>
-        </RevealFx>
-        
-        <RevealFx translateY="16" delay={0.2}>
-          <Grid columns="4" gap="8" s={{ columns: "2" }}>
-            {gallery.images.slice(0, 4).map((image, index) => (
-              <Row 
-                key={index} 
-                radius="m" 
-                overflow="hidden" 
-                style={{ aspectRatio: "1" }}
-                data-gallery-image
-              >
-                <Media
-                  src={image.src}
-                  alt={image.alt}
-                  fill
-                  sizes="(max-width: 768px) 50vw, 25vw"
-                  style={{ objectFit: "cover" }}
-                />
-              </Row>
-            ))}
-          </Grid>
-        </RevealFx>
-        
-        <RevealFx delay={0.4} horizontal="center">
-          <Button
-            href="/gallery"
-            variant="secondary"
-            size="m"
-            arrowIcon
-          >
-            View Full Gallery
-          </Button>
-        </RevealFx>
-      </Column>
+      <HomeGallery />
 
       {/* Testimonials Section */}
-      <Column fillWidth gap="l">
-        <RevealFx translateY="8">
-          <Column horizontal="center" gap="m">
-            <Text variant="label-default-s" onBackground="brand-medium">TESTIMONIALS</Text>
-            <Heading as="h2" variant="display-strong-m" align="center">
-              What Our Clients Say
-            </Heading>
-          </Column>
-        </RevealFx>
-        
-        <RevealFx translateY="16" delay={0.2}>
-          <Grid columns="3" gap="24" s={{ columns: "1" }}>
-            {testimonials.map((testimonial, index) => (
-              <Card
-                key={index}
-                padding="32"
-                radius="l"
-                background="surface"
-                border="neutral-alpha-weak"
-                direction="column"
-                gap="20"
-              >
-                <Row gap="4">
-                  {[...Array(5)].map((_, i) => (
-                    <Icon key={i} name="star" size="s" onBackground="brand-strong" />
-                  ))}
-                </Row>
-                <Text variant="body-default-m" onBackground="neutral-medium">
-                  {testimonial.text}
-                </Text>
-                <Column gap="4">
-                  <Text variant="body-strong-m">{testimonial.name}</Text>
-                  <Text variant="body-default-s" onBackground="brand-weak">{testimonial.event}</Text>
-                </Column>
-              </Card>
-            ))}
-          </Grid>
-        </RevealFx>
-      </Column>
+
+      {/* Featured Films Section */}
+      <FeaturedFilms />
+
+      {/* Testimonials Slider Section */}
+      <TestimonialSlider />
 
       {/* CTA Section */}
       <RevealFx translateY="8">
@@ -366,6 +287,12 @@ export default function Home() {
           </Row>
         </Card>
       </RevealFx>
+
+      {/* Equipment Showcase Section */}
+      <EquipmentShowcase />
+
+      {/* Instagram Grid Preview */}
+      <InstagramGrid />
 
       {/* Contact Info */}
       <Column fillWidth gap="m" horizontal="center" paddingBottom="48">

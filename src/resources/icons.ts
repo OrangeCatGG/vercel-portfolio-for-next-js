@@ -12,6 +12,12 @@ import {
   HiOutlineDocument,
   HiOutlineGlobeAsiaAustralia,
   HiOutlineRocketLaunch,
+  HiOutlineCamera,
+  HiOutlinePlay,
+  HiOutlineHeart,
+  HiOutlinePencilSquare,
+  HiOutlineSpeakerWave,
+  HiOutlinePhone,
 } from "react-icons/hi2";
 
 import {
@@ -64,6 +70,12 @@ export const iconLibrary: Record<string, IconType> = {
   reddit: FaReddit,
   telegram: FaTelegram,
   instagram: FaInstagram,
+  camera: HiOutlineCamera,
+  play: HiOutlinePlay,
+  heart: HiOutlineHeart,
+  edit: HiOutlinePencilSquare,
+  volume: HiOutlineSpeakerWave,
+  phone: HiOutlinePhone,
 };
 
 export type IconLibrary = typeof iconLibrary;

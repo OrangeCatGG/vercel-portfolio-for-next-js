@@ -1,116 +1,23 @@
 "use client";
 
 import { useState } from "react";
-import { Media, MasonryGrid, Column, Row, Badge, Heading, Text, RevealFx } from "@once-ui-system/core";
-
-type GalleryImage = {
-  src: string;
-  alt: string;
-  orientation: string;
-  category: string;
-};
-
-const galleryImages: GalleryImage[] = [
-  {
-    src: "/upload/643405084_1403924914867548_5356318093091625407_n.jpg",
-    alt: "Event photography",
-    orientation: "horizontal",
-    category: "Wedding",
-  },
-  {
-    src: "/upload/643432821_1403937904866249_1606065758966942195_n.jpg",
-    alt: "Event photography",
-    orientation: "horizontal",
-    category: "Wedding",
-  },
-  {
-    src: "/upload/644055401_1403925101534196_5850016501037753793_n.jpg",
-    alt: "Event photography",
-    orientation: "horizontal",
-    category: "Wedding",
-  },
-  {
-    src: "/upload/644992560_1403936248199748_2479726541124459247_n.jpg",
-    alt: "Event photography",
-    orientation: "vertical",
-    category: "Wedding",
-  },
-  {
-    src: "/upload/646731634_1407941631132543_7267704576008112847_n.jpg",
-    alt: "Event photography",
-    orientation: "horizontal",
-    category: "Wedding",
-  },
-  {
-    src: "/upload/647488047_1407920634467976_4575963463927026081_n.jpg",
-    alt: "Event photography",
-    orientation: "horizontal",
-    category: "Wedding",
-  },
-  {
-    src: "/upload/647860886_1407921207801252_2265483709074230455_n.jpg",
-    alt: "Event photography",
-    orientation: "vertical",
-    category: "Wedding",
-  },
-  {
-    src: "/upload/648834815_1407920677801305_2391843919423853094_n.jpg",
-    alt: "Event photography",
-    orientation: "horizontal",
-    category: "Wedding",
-  },
-  {
-    src: "/upload/648999862_1407941587799214_6146639121367153032_n.jpg",
-    alt: "Event photography",
-    orientation: "vertical",
-    category: "Wedding",
-  },
-  {
-    src: "/upload/644529092_1403906004869439_2072253442678557298_n.jpg",
-    alt: "Event photography",
-    orientation: "horizontal",
-    category: "Wedding",
-  },
-  {
-    src: "/upload/644697741_1403888501537856_7408920720871332226_n.jpg",
-    alt: "Event photography",
-    orientation: "vertical",
-    category: "Wedding",
-  },
-  {
-    src: "/upload/645063984_1403890824870957_6159837259599932731_n.jpg",
-    alt: "Event photography",
-    orientation: "horizontal",
-    category: "Wedding",
-  },
-  {
-    src: "/upload/645304854_1403906088202764_2092610171447579370_n.jpg",
-    alt: "Event photography",
-    orientation: "vertical",
-    category: "Wedding",
-  },
-  {
-    src: "/upload/645418179_1403906854869354_8830061894182832409_n.jpg",
-    alt: "Event photography",
-    orientation: "horizontal",
-    category: "Wedding",
-  },
-  {
-    src: "/upload/645711881_1403889861537720_4852969470801467914_n.jpg",
-    alt: "Event photography",
-    orientation: "vertical",
-    category: "Wedding",
-  },
-];
-
-const categories = ["All", "Wedding", "Debut", "Birthday", "Others"];
+import {
+  Media,
+  MasonryGrid,
+  Column,
+  Row,
+  Badge,
+  Heading,
+  Text,
+  RevealFx,
+} from "@once-ui-system/core";
+import { albums } from "@/resources/albums";
+import { gallery } from "@/resources/content";
 
 export default function GalleryView() {
-  const [activeCategory, setActiveCategory] = useState("All");
+  const [selectedAlbum, setSelectedAlbum] = useState<string | null>(null);
 
-  const filteredImages = activeCategory === "All" 
-    ? galleryImages 
-    : galleryImages.filter(img => img.category === activeCategory);
+  const currentAlbum = albums.find((a) => a.title === selectedAlbum);
 
   return (
     <Column fillWidth gap="32">
@@ -127,61 +34,165 @@ export default function GalleryView() {
             Our Portfolio
           </Badge>
           <Heading variant="display-strong-l" align="center">
-            Gallery
+            {selectedAlbum ? selectedAlbum : "Gallery"}
           </Heading>
-          <Text variant="body-default-l" onBackground="neutral-weak" align="center" style={{ maxWidth: "600px" }}>
-            Browse through our collection of captured moments from weddings, 
-            debuts, birthdays, and other special occasions.
+          <Text
+            variant="body-default-l"
+            onBackground="neutral-weak"
+            align="center"
+            style={{ maxWidth: "600px" }}
+          >
+            {selectedAlbum
+              ? `${currentAlbum?.images.length} photos`
+              : "Browse through our collection of captured moments from weddings, debuts, birthdays, and other special occasions."}
           </Text>
         </Column>
       </RevealFx>
 
-      {/* Category Filters */}
-      <RevealFx translateY="8" delay={0.1} fillWidth>
-        <Row fillWidth horizontal="center" gap="8" wrap>
-          {categories.map((category) => (
-            <Badge
-              key={category}
-              background={activeCategory === category ? "brand-medium" : "surface"}
-              border={activeCategory === category ? "brand-medium" : "neutral-alpha-medium"}
-              paddingX="20"
-              paddingY="8"
-              textVariant="body-default-m"
-              style={{ cursor: "pointer" }}
-              onClick={() => setActiveCategory(category)}
-            >
-              {category}
-            </Badge>
-          ))}
+      {/* Back Button (when viewing an album) */}
+      {selectedAlbum && (
+        <Row fillWidth horizontal="center">
+          <Badge
+            background="surface"
+            border="neutral-alpha-medium"
+            paddingX="20"
+            paddingY="8"
+            textVariant="body-default-m"
+            style={{ cursor: "pointer" }}
+            onClick={() => setSelectedAlbum(null)}
+          >
+            ← Back to Albums
+          </Badge>
         </Row>
-      </RevealFx>
+      )}
 
-      {/* Gallery Grid */}
-      <RevealFx translateY="16" delay={0.2}>
-        <MasonryGrid columns={2} s={{ columns: 1 }}>
-          {filteredImages.map((image, index) => (
-            <Column key={`${image.src}-${index}`} data-gallery-image>
-              <Media
-                enlarge
-                priority={index < 4}
-                sizes="(max-width: 560px) 100vw, 50vw"
-                radius="m"
-                aspectRatio={image.orientation === "horizontal" ? "16 / 9" : "3 / 4"}
-                src={image.src}
-                alt={image.alt}
-              />
+      {/* Albums Grid (when no album is selected) */}
+      {!selectedAlbum && (
+        <>
+          {/* Featured local gallery */}
+          {gallery.images.length > 0 && (
+            <RevealFx translateY="8" delay={0.1} fillWidth>
+              <Column fillWidth gap="16">
+                <Heading variant="heading-strong-m">Featured Photos</Heading>
+                <MasonryGrid columns={3} s={{ columns: 1 }}>
+                  {gallery.images.slice(0, 6).map((image, index) => (
+                    <Column key={`local-${index}`}>
+                      <Media
+                        enlarge
+                        priority={index < 4}
+                        sizes="(max-width: 560px) 100vw, 33vw"
+                        radius="m"
+                        aspectRatio={
+                          image.orientation === "horizontal"
+                            ? "16 / 9"
+                            : "3 / 4"
+                        }
+                        src={image.src}
+                        alt={image.alt}
+                      />
+                    </Column>
+                  ))}
+                </MasonryGrid>
+              </Column>
+            </RevealFx>
+          )}
+
+          {/* Album Cards */}
+          <RevealFx translateY="12" delay={0.2} fillWidth>
+            <Column fillWidth gap="16">
+              <Heading variant="heading-strong-m">Albums</Heading>
+              <Row fillWidth gap="16" wrap>
+                {albums.map((album) => (
+                  <Column
+                    key={album.title}
+                    style={{
+                      cursor: "pointer",
+                      flex: "1 1 340px",
+                      maxWidth: "calc(50% - 8px)",
+                      position: "relative",
+                      overflow: "hidden",
+                      borderRadius: "var(--radius-m, 12px)",
+                    }}
+                    onClick={() => setSelectedAlbum(album.title)}
+                  >
+                    <div
+                      style={{
+                        position: "relative",
+                        width: "100%",
+                        aspectRatio: "16 / 10",
+                        overflow: "hidden",
+                        borderRadius: "var(--radius-m, 12px)",
+                      }}
+                    >
+                      <Media
+                        sizes="(max-width: 560px) 100vw, 50vw"
+                        radius="m"
+                        aspectRatio="16 / 10"
+                        src={album.cover}
+                        alt={album.title}
+                        style={{
+                          width: "100%",
+                          height: "100%",
+                          objectFit: "cover",
+                          transition: "transform 0.4s ease",
+                        }}
+                      />
+                      <div
+                        style={{
+                          position: "absolute",
+                          bottom: 0,
+                          left: 0,
+                          right: 0,
+                          padding: "48px 20px 20px",
+                          background:
+                            "linear-gradient(transparent, rgba(0,0,0,0.85))",
+                          display: "flex",
+                          flexDirection: "column",
+                          gap: "4px",
+                        }}
+                      >
+                        <Text
+                          variant="heading-strong-m"
+                          onBackground="neutral-strong"
+                          style={{ color: "#fff" }}
+                        >
+                          {album.title}
+                        </Text>
+                        <Text
+                          variant="body-default-s"
+                          style={{ color: "rgba(255,255,255,0.7)" }}
+                        >
+                          {album.images.length} photos
+                        </Text>
+                      </div>
+                    </div>
+                  </Column>
+                ))}
+              </Row>
             </Column>
-          ))}
-        </MasonryGrid>
-      </RevealFx>
+          </RevealFx>
+        </>
+      )}
 
-      {/* Empty State */}
-      {filteredImages.length === 0 && (
-        <Column horizontal="center" padding="48">
-          <Text variant="body-default-l" onBackground="neutral-weak" align="center">
-            No images found in this category.
-          </Text>
-        </Column>
+      {/* Album Detail View (when an album is selected) */}
+      {selectedAlbum && currentAlbum && (
+        <RevealFx translateY="16" delay={0.1}>
+          <MasonryGrid columns={2} s={{ columns: 1 }}>
+            {currentAlbum.images.map((src, index) => (
+              <Column key={`${src}-${index}`}>
+                <Media
+                  enlarge
+                  priority={index < 4}
+                  sizes="(max-width: 560px) 100vw, 50vw"
+                  radius="m"
+                  aspectRatio="16 / 9"
+                  src={src}
+                  alt={`${currentAlbum.title} photo ${index + 1}`}
+                />
+              </Column>
+            ))}
+          </MasonryGrid>
+        </RevealFx>
       )}
     </Column>
   );

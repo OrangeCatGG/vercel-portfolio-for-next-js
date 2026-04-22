@@ -22,6 +22,9 @@ import HomeGallery from "@/components/HomeGallery";
 import EquipmentShowcase from "@/components/EquipmentShowcase";
 import MeetThePhotographer from "@/components/MeetThePhotographer";
 import TestimonialSlider from "@/components/TestimonialSlider";
+import FAQSection from "@/components/FAQSection";
+import PackageHighlights from "@/components/PackageHighlights";
+import ServiceLocations from "@/components/ServiceLocations";
 
 export async function generateMetadata() {
   return Meta.generate({
@@ -236,6 +239,9 @@ export default function Home() {
         </RevealFx>
       </Column>
 
+      {/* Package Highlights Section */}
+      <PackageHighlights />
+
       {/* Gallery Preview */}
       <HomeGallery />
 
@@ -323,6 +329,12 @@ export default function Home() {
           </Row>
         </Row>
       </Column>
+
+      {/* Service Locations Section */}
+      <ServiceLocations />
+
+      {/* FAQ Section */}
+      <FAQSection />
     </Column>
   );
 }

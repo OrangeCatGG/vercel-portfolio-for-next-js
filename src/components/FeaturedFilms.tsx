@@ -32,6 +32,14 @@ const featuredFilms = [
     type: "Pre-Wedding Film",
     videoSrc: "/videos/wedding/wedding2.mp4",
   },
+  {
+    id: "3",
+    title: "Jared and Aimie",
+    date: "",
+    location: "Crystal Palace of Aquila in the Sky",
+    type: "Same Day Edit",
+    facebookUrl: "https://www.facebook.com/angeloramos.photography/videos/1925604778073944/",
+  },
 ];
 
 export default function FeaturedFilms() {
@@ -88,21 +96,37 @@ export default function FeaturedFilms() {
                     position: "relative",
                   }}
                 >
-                  <video
-                    style={{
-                      width: "100%",
-                      height: "100%",
-                      objectFit: "cover",
-                      display: "block",
-                    }}
-                    muted
-                    autoPlay
-                    loop
-                    playsInline
-                    preload="metadata"
-                  >
-                    <source src={`${film.videoSrc}#t=10`} type="video/mp4" />
-                  </video>
+                  {film.videoSrc ? (
+                    <video
+                      style={{
+                        width: "100%",
+                        height: "100%",
+                        objectFit: "cover",
+                        display: "block",
+                      }}
+                      muted
+                      autoPlay
+                      loop
+                      playsInline
+                      preload="metadata"
+                    >
+                      <source src={`${film.videoSrc}#t=10`} type="video/mp4" />
+                    </video>
+                  ) : (
+                    <iframe
+                      src={`https://www.facebook.com/plugins/video.php?href=${encodeURIComponent(film.facebookUrl || "")}&show_text=false`}
+                      style={{
+                        width: "100%",
+                        height: "100%",
+                        border: "none",
+                        overflow: "hidden",
+                      }}
+                      scrolling="no"
+                      frameBorder="0"
+                      allowFullScreen
+                      allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share"
+                    />
+                  )}
                   <Row
                     position="absolute"
                     vertical="center"

@@ -16,6 +16,8 @@ import { gallery } from "@/resources/content";
 
 export default function GalleryView() {
   const [selectedAlbum, setSelectedAlbum] = useState<string | null>(null);
+  const [visibleCount, setVisibleCount] = useState(20);
+
 
   const currentAlbum = albums.find((a) => a.title === selectedAlbum);
 
@@ -59,7 +61,10 @@ export default function GalleryView() {
             paddingY="8"
             textVariant="body-default-m"
             style={{ cursor: "pointer" }}
-            onClick={() => setSelectedAlbum(null)}
+            onClick={() => {
+              setSelectedAlbum(null);
+              setVisibleCount(20);
+            }}
           >
             ← Back to Albums
           </Badge>
@@ -177,21 +182,39 @@ export default function GalleryView() {
       {/* Album Detail View (when an album is selected) */}
       {selectedAlbum && currentAlbum && (
         <RevealFx translateY="16" delay={0.1}>
-          <MasonryGrid columns={2} s={{ columns: 1 }}>
-            {currentAlbum.images.map((src, index) => (
-              <Column key={`${src}-${index}`}>
-                <Media
-                  enlarge
-                  priority={index < 4}
-                  sizes="(max-width: 560px) 100vw, 50vw"
-                  radius="m"
-                  aspectRatio="16 / 9"
-                  src={src}
-                  alt={`${currentAlbum.title} photo ${index + 1}`}
-                />
-              </Column>
-            ))}
-          </MasonryGrid>
+          <Column fillWidth gap="32">
+            <MasonryGrid columns={2} s={{ columns: 1 }}>
+              {currentAlbum.images.slice(0, visibleCount).map((src, index) => (
+                <Column key={`${src}-${index}`}>
+                  <Media
+                    enlarge
+                    priority={index < 4}
+                    sizes="(max-width: 560px) 100vw, 50vw"
+                    radius="m"
+                    aspectRatio="16 / 9"
+                    src={src}
+                    alt={`${currentAlbum.title} photo ${index + 1}`}
+                  />
+                </Column>
+              ))}
+            </MasonryGrid>
+            
+            {visibleCount < currentAlbum.images.length && (
+              <Row fillWidth horizontal="center" paddingBottom="48">
+                <Badge
+                  background="brand-alpha-weak"
+                  onBackground="brand-strong"
+                  paddingX="24"
+                  paddingY="12"
+                  textVariant="body-strong-m"
+                  style={{ cursor: "pointer" }}
+                  onClick={() => setVisibleCount(prev => prev + 20)}
+                >
+                  Load More Photos ({currentAlbum.images.length - visibleCount} remaining)
+                </Badge>
+              </Row>
+            )}
+          </Column>
         </RevealFx>
       )}
     </Column>

@@ -25,6 +25,7 @@ import TestimonialSlider from "@/components/TestimonialSlider";
 import FAQSection from "@/components/FAQSection";
 import PackageHighlights from "@/components/PackageHighlights";
 import ServiceLocations from "@/components/ServiceLocations";
+import StatsSection from "@/components/StatsSection";
 
 export async function generateMetadata() {
   return Meta.generate({
@@ -152,6 +153,9 @@ export default function Home() {
 
       {/* Meet The Photographer Section */}
       <MeetThePhotographer />
+
+      {/* Stats Section */}
+      <StatsSection />
 
       {/* Services Section */}
       <Column fillWidth gap="l" id="services">

@@ -15,6 +15,7 @@ import {
 } from "@once-ui-system/core";
 import { Footer, Header, RouteGuard, Providers } from "@/components";
 import MessengerButton from "@/components/MessengerButton";
+import StructuredData from "@/components/StructuredData";
 import { baseURL, effects, fonts, style, dataStyle, home } from "@/resources";
 
 export async function generateMetadata() {
@@ -103,52 +104,7 @@ export default async function RootLayout({
             `,
           }}
         />
-        <script
-          type="application/ld+json"
-          dangerouslySetInnerHTML={{
-            __html: JSON.stringify({
-              "@context": "https://schema.org",
-              "@type": "PhotographyBusiness",
-              "name": "Angeloramos Photography",
-              "image": "https://angeloramos.photography/images/og/home.jpg",
-              "@id": "https://angeloramos.photography",
-              "url": "https://angeloramos.photography",
-              "telephone": "+639488895424",
-              "priceRange": "$$",
-              "address": {
-                "@type": "PostalAddress",
-                "streetAddress": "Metro Manila",
-                "addressLocality": "Quezon City",
-                "addressRegion": "NCR",
-                "postalCode": "1100",
-                "addressCountry": "PH"
-              },
-              "geo": {
-                "@type": "GeoCoordinates",
-                "latitude": 14.6760,
-                "longitude": 121.0437
-              },
-              "openingHoursSpecification": {
-                "@type": "OpeningHoursSpecification",
-                "dayOfWeek": [
-                  "Monday",
-                  "Tuesday",
-                  "Wednesday",
-                  "Thursday",
-                  "Friday",
-                  "Saturday",
-                  "Sunday"
-                ],
-                "opens": "09:00",
-                "closes": "21:00"
-              },
-              "sameAs": [
-                "https://www.facebook.com/angeloramos.photography",
-                "https://www.instagram.com/angeloramosph/"
-              ]
-            })
-          }}
-        />
+        <StructuredData />
       </head>
       <Providers>
         <Column

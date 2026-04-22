@@ -6,7 +6,8 @@ const sdeVideos: Record<string, {
   couple: string;
   type: string;
   date?: string;
-  video: string;
+  video?: string;
+  facebookUrl?: string;
   credits: { icon: string; label: string; value: string }[];
 }> = {
   "1": {
@@ -28,6 +29,17 @@ const sdeVideos: Record<string, {
     credits: [
       { icon: "sparkle", label: "HMUA", value: "Dabica Gonzales-Valentin Hmua" },
       { icon: "person", label: "Wardrobe", value: "Amarabelliana's Gowns" },
+    ],
+  },
+  "3": {
+    couple: "Jared and Aimie",
+    type: "Same Day Edit",
+    facebookUrl: "https://www.facebook.com/angeloramos.photography/videos/1925604778073944/",
+    credits: [
+      { icon: "mapPin", label: "Venue", value: "Crystal Palace of Aquila in the Sky" },
+      { icon: "calendar", label: "Coordinator", value: "Events by Cath Cruz" },
+      { icon: "sparkle", label: "HMUA", value: "Glamorphosis Makeup by Dabica Gonzales" },
+      { icon: "person", label: "Host", value: "Randy Balaguer" },
     ],
   },
 };
@@ -84,18 +96,49 @@ export default async function SDEVideoPage({ params }: { params: Promise<{ id: s
           border="neutral-alpha-weak"
           padding="0"
         >
-          <video
-            controls
-            autoPlay
-            style={{
-              width: "100%",
-              display: "block",
-              background: "#000",
-            }}
-          >
-            <source src={video.video} type="video/mp4" />
-            Your browser does not support the video tag.
-          </video>
+          {video.video ? (
+            <video
+              controls
+              autoPlay
+              style={{
+                width: "100%",
+                display: "block",
+                background: "#000",
+              }}
+            >
+              <source src={video.video} type="video/mp4" />
+              Your browser does not support the video tag.
+            </video>
+          ) : video.facebookUrl ? (
+            <Column fillWidth>
+              <iframe
+                src={`https://www.facebook.com/plugins/video.php?href=${encodeURIComponent(video.facebookUrl)}&show_text=false&width=734`}
+                style={{
+                  width: "100%",
+                  aspectRatio: "16/9",
+                  border: "none",
+                  overflow: "hidden",
+                  display: "block",
+                  background: "#000",
+                }}
+                scrolling="no"
+                frameBorder="0"
+                allowFullScreen
+                allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share"
+              />
+              <Row padding="16" horizontal="center" background="surface">
+                <Button 
+                  href={video.facebookUrl} 
+                  target="_blank" 
+                  variant="tertiary" 
+                  size="s" 
+                  prefixIcon="facebook"
+                >
+                  Watch on Facebook
+                </Button>
+              </Row>
+            </Column>
+          ) : null}
         </Card>
       </RevealFx>
 

@@ -72,7 +72,18 @@ img {
   transition: transform 0.3s ease, filter 0.3s ease;
 }
 
-/* Gallery hover effects */
 [data-gallery-image]:hover img {
   transform: scale(1.02);
+}
+
+/* Service Card Hover Effects */
+.service-card:hover {
+  transform: translateY(-8px);
+  border-color: rgba(238, 175, 41, 0.4) !important;
+  background: var(--brand-alpha-weak) !important;
+}
+
+.service-card:hover .service-icon-wrapper {
+  background: var(--brand-alpha-medium) !important;
+  transform: scale(1.1);
 }

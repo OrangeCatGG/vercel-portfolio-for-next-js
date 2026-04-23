@@ -2,6 +2,7 @@
 
 import { useState, useEffect } from "react";
 import {
+  Flex,
   Heading,
   Text,
   Row,
@@ -61,13 +62,15 @@ export default function TestimonialSlider() {
       </RevealFx>
 
       <Row fillWidth vertical="center" horizontal="center" gap="l" s={{ direction: "column" }}>
-        <IconButton
-          icon="chevronLeft"
-          variant="secondary"
-          size="m"
-          onClick={prevSlide}
-          style={{ zIndex: 10 }}
-        />
+        <Flex s={{ hide: true }}>
+          <IconButton
+            icon="chevronLeft"
+            variant="secondary"
+            size="m"
+            onClick={prevSlide}
+            style={{ zIndex: 10 }}
+          />
+        </Flex>
 
         <Column
           fillWidth
@@ -133,13 +136,15 @@ export default function TestimonialSlider() {
           </Row>
         </Column>
 
-        <IconButton
-          icon="chevronRight"
-          variant="secondary"
-          size="m"
-          onClick={nextSlide}
-          style={{ zIndex: 10 }}
-        />
+        <Flex s={{ hide: true }}>
+          <IconButton
+            icon="chevronRight"
+            variant="secondary"
+            size="m"
+            onClick={nextSlide}
+            style={{ zIndex: 10 }}
+          />
+        </Flex>
       </Row>
 
       {/* Slide Indicators */}

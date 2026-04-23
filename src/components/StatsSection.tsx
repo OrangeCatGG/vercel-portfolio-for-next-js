@@ -40,29 +40,42 @@ function Counter({ value, suffix }: { value: number; suffix: string }) {
 export default function StatsSection() {
   return (
     <RevealFx translateY="16" fillWidth>
-      <Row 
+      <Column 
         fillWidth 
         paddingY="64" 
+        paddingX="32"
         gap="32" 
-        wrap 
+        radius="xl"
+        background="surface"
+        border="neutral-alpha-weak"
         horizontal="center"
-        borderTop="neutral-alpha-weak"
-        borderBottom="neutral-alpha-weak"
+        style={{
+          boxShadow: '0 20px 40px rgba(0,0,0,0.1)',
+          background: 'linear-gradient(135deg, rgba(255,255,255,0.02) 0%, rgba(255,255,255,0.05) 100%)',
+          backdropFilter: 'blur(10px)'
+        }}
       >
-        {stats.map((stat, index) => (
-          <Column 
-            key={index} 
-            horizontal="center" 
-            gap="8" 
-            style={{ flex: "1 1 200px" }}
-          >
-            <Counter value={stat.value} suffix={stat.suffix} />
-            <Text variant="label-default-s" onBackground="neutral-weak">
-              {stat.label.toUpperCase()}
-            </Text>
-          </Column>
-        ))}
-      </Row>
+        <Row 
+          fillWidth 
+          gap="32" 
+          wrap 
+          horizontal="center"
+        >
+          {stats.map((stat, index) => (
+            <Column 
+              key={index} 
+              horizontal="center" 
+              gap="12" 
+              style={{ flex: "1 1 180px", minWidth: '150px' }}
+            >
+              <Counter value={stat.value} suffix={stat.suffix} />
+              <Text variant="label-default-s" onBackground="brand-medium" style={{ letterSpacing: '0.1em' }}>
+                {stat.label.toUpperCase()}
+              </Text>
+            </Column>
+          ))}
+        </Row>
+      </Column>
     </RevealFx>
   );
 }

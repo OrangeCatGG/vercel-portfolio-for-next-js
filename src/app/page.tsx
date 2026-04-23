@@ -62,7 +62,8 @@ const events = [
 
 export default function Home() {
   return (
-    <Column maxWidth="l" gap="104" paddingY="0" horizontal="center">
+    <Column maxWidth="l" gap="160" paddingY="0" horizontal="center">
+
       <Schema
         as="webPage"
         baseURL={baseURL}
@@ -100,13 +101,13 @@ export default function Home() {
           )}
           
           <RevealFx translateY="4" fillWidth horizontal="center">
-            <Heading wrap="balance" variant="display-strong-xl" align="center">
+            <Heading wrap="balance" variant="display-strong-xl" align="center" style={{ letterSpacing: '-0.02em', lineHeight: '1.1' }}>
               {home.headline}
             </Heading>
           </RevealFx>
           
-          <RevealFx translateY="8" delay={0.2} fillWidth horizontal="center" paddingTop="8">
-            <Text wrap="balance" onBackground="neutral-weak" variant="heading-default-l" align="center">
+          <RevealFx translateY="8" delay={0.2} fillWidth horizontal="center" paddingTop="16">
+            <Text wrap="balance" onBackground="neutral-weak" variant="heading-default-l" align="center" style={{ maxWidth: '700px', margin: '0 auto' }}>
               {home.subline}
             </Text>
           </RevealFx>
@@ -160,8 +161,8 @@ export default function Home() {
       {/* Services Section */}
       <Column fillWidth gap="l" id="services">
         <RevealFx translateY="8" fillWidth>
-          <Column fillWidth horizontal="center" gap="m">
-            <Text variant="label-default-s" onBackground="brand-medium">OUR SERVICES</Text>
+          <Column fillWidth horizontal="center" gap="16">
+            <Text variant="label-default-s" onBackground="brand-medium" style={{ letterSpacing: '0.2em' }}>OUR SERVICES</Text>
             <Heading as="h2" variant="display-strong-m" align="center">
               Complete Photography Solutions
             </Heading>
@@ -172,24 +173,32 @@ export default function Home() {
           </Column>
         </RevealFx>
         
-        <RevealFx translateY="16" delay={0.2}>
+        <RevealFx translateY="16" delay={0.2} fillWidth>
           <Grid columns="4" gap="16" s={{ columns: "2" }}>
             {services.map((service, index) => (
               <Card
                 key={index}
-                padding="24"
+                padding="32"
                 radius="l"
                 background="surface"
                 border="neutral-alpha-weak"
                 direction="column"
-                gap="12"
+                gap="16"
                 horizontal="center"
                 align="center"
+                style={{
+                  transition: 'all 0.3s ease',
+                  cursor: 'default'
+                }}
+                className="service-card"
               >
                 <Row 
-                  padding="12" 
+                  padding="16" 
                   radius="full" 
                   background="brand-alpha-weak"
+                  border="brand-alpha-weak"
+                  style={{ transition: 'all 0.3s ease' }}
+                  className="service-icon-wrapper"
                 >
                   <Icon name={service.icon as any} size="l" onBackground="brand-strong" />
                 </Row>
@@ -216,9 +225,9 @@ export default function Home() {
 
       {/* Events Covered Section */}
       <Column fillWidth gap="l">
-        <RevealFx translateY="8">
-          <Column horizontal="center" gap="m">
-            <Text variant="label-default-s" onBackground="brand-medium">EVENTS WE COVER</Text>
+        <RevealFx translateY="8" fillWidth>
+          <Column horizontal="center" gap="16">
+            <Text variant="label-default-s" onBackground="brand-medium" style={{ letterSpacing: '0.2em' }}>EVENTS WE COVER</Text>
             <Heading as="h2" variant="display-strong-m" align="center">
               Every Celebration Matters
             </Heading>

@@ -15,7 +15,7 @@ export default function MeetThePhotographer() {
   return (
     <Row fillWidth gap="xl" vertical="center" s={{ direction: "column-reverse" }}>
       {/* Text Column */}
-      <RevealFx translateY="16" style={{ flex: 1.2 }}>
+      <RevealFx translateY="16" style={{ flex: 1 }}>
         <Column gap="l">
           <Column gap="m">
             <Text variant="label-default-s" onBackground="brand-medium">
@@ -41,7 +41,7 @@ export default function MeetThePhotographer() {
       </RevealFx>
 
       {/* Image Column */}
-      <RevealFx translateY="16" delay={0.2} style={{ flex: 0.8 }}>
+      <RevealFx translateY="16" delay={0.2} style={{ flex: 1 }}>
         <Column
           radius="xl"
           overflow="hidden"

@@ -91,7 +91,7 @@ export default function PackageHighlights() {
                 flex: "1 1 320px",
                 maxWidth: "400px",
                 position: pkg.featured ? "relative" : "static",
-                transform: pkg.featured ? "scale(1.05)" : "scale(1)",
+                transform: "none",
                 zIndex: pkg.featured ? 10 : 1,
                 boxShadow: pkg.featured ? "0 20px 40px rgba(0,0,0,0.3)" : "none",
               }}
@@ -146,10 +146,13 @@ export default function PackageHighlights() {
       </RevealFx>
 
       <style jsx global>{`
+        .package-card {
+          transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1) !important;
+        }
         .package-card:hover {
-          transform: translateY(-8px) ${packages.find(p => p.featured) ? "scale(1.05)" : ""} !important;
-          border-color: rgba(238, 175, 41, 0.4) !important;
-          transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
+          transform: translateY(-12px) !important;
+          border-color: var(--brand-strong) !important;
+          box-shadow: 0 30px 60px rgba(0,0,0,0.4) !important;
         }
       `}</style>
     </Column>

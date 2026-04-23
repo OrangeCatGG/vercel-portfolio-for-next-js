@@ -39,7 +39,7 @@ export default function InstagramGrid() {
       </RevealFx>
 
       <RevealFx translateY="16" delay={0.2} fillWidth>
-        <Grid columns="3" gap="8" m={{ columns: "2" }} s={{ columns: "3" }}>
+        <Grid columns="3" gap="8" m={{ columns: "2" }} s={{ columns: "2" }}>
           {instagramImages.map((image, index) => (
             <Column
               key={index}
